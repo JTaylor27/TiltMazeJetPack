@@ -15,6 +15,9 @@ fun GameScreen(
     timerText: String,
     tiltX: Float,
     tiltY: Float,
+    ballColor: BallColor,
+    confirmShowTimer: Boolean,
+    ballSpeed: Int,
     onBackToMenu: () -> Unit,
     onMazeWin: (Long) -> Unit
 ) {
@@ -35,11 +38,13 @@ fun GameScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // Timer
-            Text(
-                text = timerText,
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
+            if(confirmShowTimer) {
+                Text(
+                    text = timerText,
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
 
             // Maze
             Box(
@@ -54,6 +59,8 @@ fun GameScreen(
                     tileSizeDp = tileSizeDp,
                     tiltX = tiltX,
                     tiltY = tiltY,
+                    ballColor = ballColor,
+                    ballSpeed = ballSpeed,
                     onGameWin = onMazeWin
                 )
             }

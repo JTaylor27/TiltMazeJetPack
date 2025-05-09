@@ -58,4 +58,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.material3)
+    implementation(libs.androidx.datastore.preferences)
 }

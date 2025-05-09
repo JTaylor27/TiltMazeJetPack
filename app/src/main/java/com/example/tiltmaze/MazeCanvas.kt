@@ -25,6 +25,8 @@ fun MazeCanvas(
     tileSizeDp: Dp,
     tiltX: Float,
     tiltY: Float,
+    ballColor: BallColor,
+    ballSpeed: Int,
     onGameWin: (Long) -> Unit
 ) {
     val tileSizePx = with(LocalDensity.current) { tileSizeDp.toPx() }
@@ -58,7 +60,7 @@ fun MazeCanvas(
         }
 
         // --- Ball movement ---
-        val speed = 0.01f
+        val speed = 0.01f * ballSpeed
         val nextX = ballOffset.x + tiltX * speed
         val nextY = ballOffset.y + tiltY * speed
         val radius = 0.35f
@@ -73,8 +75,15 @@ fun MazeCanvas(
 
         val cx = ballOffset.x * tileSizePx
         val cy = ballOffset.y * tileSizePx
+
+        //ball color from settings
+        val color = when (ballColor) {
+            BallColor.RED -> Color.Red
+            BallColor.BLUE -> Color.Blue
+            BallColor.GREEN -> Color.Green
+        }
         drawCircle(
-            color = Color.Red,
+            color = color,
             radius = tileSizePx * radius,
             center = Offset(cx, cy)
         )

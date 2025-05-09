@@ -48,6 +48,18 @@ fun MainMenuScreen() {
 
         Button(
             onClick = {
+                context.startActivity(Intent(context, SettingsActivity::class.java))
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Text("Settings")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Button(
+            onClick = {
                 context.startActivity(Intent(context, AboutActivity::class.java))
             },
             modifier = Modifier
